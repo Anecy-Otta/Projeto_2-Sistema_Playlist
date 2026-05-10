@@ -1,4 +1,4 @@
-from modelos import NodoLista
+from modelos import NodoLista, NodoFila
 
 class Biblioteca:
     def __init__(self):
@@ -43,3 +43,37 @@ class Biblioteca:
             atual = atual.proximo
             
         return False 
+    
+class Fila:
+    def __init__(self):
+        self.frente = None
+        self.fim = None
+        self._tamanho = 0 
+
+    def esta_vazia(self):
+        return self.frente is None
+
+    def enfileirar(self, musica):
+        """Adiciona uma música ao fim da fila (enqueue)."""
+        novo_nodo = NodoFila(musica)
+        if self.esta_vazia():
+            self.frente = novo_nodo
+            self.fim = novo_nodo
+        else:
+            self.fim.proximo = novo_nodo
+            self.fim = novo_nodo
+        self._tamanho += 1
+
+    def desenfileirar(self):
+        """Remove e retorna a música da frente da fila (dequeue)."""
+        if self.esta_vazia():
+            return None
+        
+        musica = self.frente.musica
+        self.frente = self.frente.proximo
+        
+        if self.frente is None:
+            self.fim = None
+            
+        self._tamanho -= 1
+        return musica
