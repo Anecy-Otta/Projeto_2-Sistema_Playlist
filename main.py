@@ -1,8 +1,9 @@
 from modelos import Musica
-from estruturas import Biblioteca
+from estruturas import Biblioteca, Fila
 
 def principal():
     minha_biblioteca = Biblioteca()
+    fila_reproducao = Fila()
 
     while True:
         print("\n" + "="*30)
@@ -11,6 +12,7 @@ def principal():
         print("2. Remover música da biblioteca")
         print("3. Buscar música na biblioteca")
         print("4. Listar todas as músicas da biblioteca")
+        print("5. Montar fila de reprodução por humor (BPM)")
         print("0. Sair do programa")
         print("="*30)
         
@@ -90,6 +92,38 @@ def principal():
             
             if not tem_musicas:
                 print("A biblioteca está vazia no momento. Adicione algumas músicas primeiro!")
+
+        elif opcao == "5":
+            print("\n--- Montar Fila de Reprodução por Humor ---")
+            print("1. Relaxar (até 80 BPM)")
+            print("2. Focar (81 a 120 BPM)")
+            print("3. Animar (121 a 160 BPM)")
+            print("4. Treinar (acima de 160 BPM)")
+            
+            escolha_humor = input("Escolha o humor desejado (1 a 4): ")
+            
+            if escolha_humor == "1":
+                bpm_min, bpm_max = 0, 80
+                nome_fila = "Relaxar"
+            elif escolha_humor == "2":
+                bpm_min, bpm_max = 81, 120
+                nome_fila = "Focar"
+            elif escolha_humor == "3":
+                bpm_min, bpm_max = 121, 160
+                nome_fila = "Animar"
+            elif escolha_humor == "4":
+                bpm_min, bpm_max = 161, 9999 
+                nome_fila = "Treinar"
+            else:
+                print("Opção inválida. Operação cancelada.")
+                continue 
+            
+            fila_reproducao = minha_biblioteca.filtrar_por_bpm(bpm_min, bpm_max)
+            
+            if fila_reproducao.esta_vazia():
+                print(f"\nNenhuma música na biblioteca se encaixa no humor '{nome_fila}' ({bpm_min}-{bpm_max} BPM).")
+            else:
+                print(f"\nFila '{nome_fila}' montada do zero com {fila_reproducao._tamanho} música(s)!")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")

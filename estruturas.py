@@ -50,6 +50,21 @@ class Biblioteca:
             
         return True
 
+    def filtrar_por_bpm(self, bpm_min, bpm_max):
+        """
+        Cria e retorna uma nova Fila contendo apenas as músicas 
+        que estão dentro do intervalo de BPM especificado.
+        """
+        fila_filtrada = Fila() 
+        atual = self.inicio
+        
+        while atual is not None:
+            if bpm_min <= atual.musica.bpm <= bpm_max:
+                fila_filtrada.enfileirar(atual.musica)
+            atual = atual.proximo
+            
+        return fila_filtrada
+
     def remover(self, id_musica):
         """Remove uma música da lista baseada no ID."""
         atual = self.inicio
