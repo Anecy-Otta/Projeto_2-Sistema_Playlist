@@ -17,6 +17,7 @@ def principal():
         print("6. Reproduzir próxima música da fila")
         print("7. Exibir fila de reprodução atual")
         print("8. Exibir histórico de reproduções")
+        print("9. Exibir estatísticas do sistema")
         print("0. Sair do programa")
         print("="*30)
         
@@ -156,6 +157,26 @@ def principal():
             
             if not tem_historico:
                 print("O histórico está vazio. Reproduza algumas músicas na Opção 6 primeiro!")
+
+        elif opcao == "9":
+            print("\n--- Estatísticas do Sistema ---")
+            
+            total_biblioteca = minha_biblioteca.tamanho()
+            print(f"Total de músicas cadastradas: {total_biblioteca}")
+            
+            qtd_relaxar = minha_biblioteca.filtrar_por_bpm(0, 80)._tamanho
+            qtd_focar = minha_biblioteca.filtrar_por_bpm(81, 120)._tamanho
+            qtd_animar = minha_biblioteca.filtrar_por_bpm(121, 160)._tamanho
+            qtd_treinar = minha_biblioteca.filtrar_por_bpm(161, 9999)._tamanho
+            
+            print("\nDistribuição por Humor (Tamanho das filas):")
+            print(f" - Relaxar (até 80 BPM): {qtd_relaxar}")
+            print(f" - Focar (81 a 120 BPM): {qtd_focar}")
+            print(f" - Animar (121 a 160 BPM): {qtd_animar}")
+            print(f" - Treinar (>160 BPM): {qtd_treinar}")
+            
+            total_reproduzidas = historico._tamanho
+            print(f"\nTotal de músicas já reproduzidas (Histórico): {total_reproduzidas}")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")

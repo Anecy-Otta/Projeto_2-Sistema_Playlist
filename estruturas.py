@@ -83,6 +83,15 @@ class Biblioteca:
             
         return False 
     
+    def tamanho(self):
+        """Percorre a lista encadeada e conta quantos nós (músicas) existem."""
+        contador = 0
+        atual = self.inicio
+        while atual is not None:
+            contador += 1
+            atual = atual.proximo
+        return contador
+    
 class Fila:
     def __init__(self):
         self.frente = None
