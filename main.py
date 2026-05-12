@@ -15,6 +15,7 @@ def principal():
         print("4. Listar todas as músicas da biblioteca")
         print("5. Montar fila de reprodução por humor (BPM)")
         print("6. Reproduzir próxima música da fila")
+        print("7. Exibir fila de reprodução atual")
         print("0. Sair do programa")
         print("="*30)
         
@@ -138,6 +139,14 @@ def principal():
                 print(f"Tocando agora: {musica_atual}")
                 
                 historico.enfileirar(musica_atual)
+
+        elif opcao == "7":
+            print("\n--- Fila de Reprodução Atual ---")
+            
+            tem_musicas = fila_reproducao.exibir_fila()
+            
+            if not tem_musicas:
+                print("A fila de reprodução está vazia. Vá na Opção 5 para montar uma nova fila.")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")

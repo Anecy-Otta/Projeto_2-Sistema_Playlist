@@ -116,3 +116,20 @@ class Fila:
             
         self._tamanho -= 1
         return musica
+    
+    def exibir_fila(self):
+        """Percorre a fila da frente até o fim e exibe as músicas sem removê-las.
+        Retorna False se estiver vazia, e True se exibiu algo."""
+        
+        if self.esta_vazia():
+            return False
+            
+        atual = self.frente
+        posicao = 1 
+        
+        while atual is not None:
+            print(f"{posicao}ª a tocar: {atual.musica}")
+            atual = atual.proximo
+            posicao += 1
+            
+        return True
