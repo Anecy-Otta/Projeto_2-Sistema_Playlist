@@ -16,6 +16,7 @@ def principal():
         print("5. Montar fila de reprodução por humor (BPM)")
         print("6. Reproduzir próxima música da fila")
         print("7. Exibir fila de reprodução atual")
+        print("8. Exibir histórico de reproduções")
         print("0. Sair do programa")
         print("="*30)
         
@@ -147,6 +148,14 @@ def principal():
             
             if not tem_musicas:
                 print("A fila de reprodução está vazia. Vá na Opção 5 para montar uma nova fila.")
+
+        elif opcao == "8":
+            print("\n--- Histórico de Reproduções ---")
+            
+            tem_historico = historico.exibir_fila()
+            
+            if not tem_historico:
+                print("O histórico está vazio. Reproduza algumas músicas na Opção 6 primeiro!")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")
