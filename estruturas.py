@@ -35,6 +35,21 @@ class Biblioteca:
             atual = atual.proximo
         return None 
 
+    def listar_todas(self):
+        """Percorre a lista do início ao fim e exibe todas as músicas.
+        Retorna False se a lista estiver vazia e True se exibiu algo."""
+        
+        if self.inicio is None:
+            return False
+            
+        atual = self.inicio
+        while atual is not None:
+            print(atual.musica)
+            
+            atual = atual.proximo
+            
+        return True
+
     def remover(self, id_musica):
         """Remove uma música da lista baseada no ID."""
         atual = self.inicio

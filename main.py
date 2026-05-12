@@ -10,6 +10,7 @@ def principal():
         print("1. Adicionar música à biblioteca")
         print("2. Remover música da biblioteca")
         print("3. Buscar música na biblioteca")
+        print("4. Listar todas as músicas da biblioteca")
         print("0. Sair do programa")
         print("="*30)
         
@@ -39,7 +40,7 @@ def principal():
             print(f"\n Sucesso! A música '{nova_musica.titulo}' foi adicionada com o ID: {nova_musica.id}")
 
         elif opcao == "2":
-            print("\n--- Remover Música da Biblioteca ---")
+            print("\n--- Remover Música ---")
             
             id_input = input("Digite o ID da música que deseja remover: ")
             
@@ -81,6 +82,14 @@ def principal():
                     print("\n Nenhuma música encontrada com este título.")
             else:
                 print(" Opção inválida.")
+
+        elif opcao == "4":
+            print("\n--- Biblioteca Completa ---")
+            
+            tem_musicas = minha_biblioteca.listar_todas()
+            
+            if not tem_musicas:
+                print("A biblioteca está vazia no momento. Adicione algumas músicas primeiro!")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")
