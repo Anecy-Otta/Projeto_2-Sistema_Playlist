@@ -7,7 +7,7 @@ def principal():
     historico = Fila() 
 
     while True:
-        print("\n" + "="*30)
+        print("\n" + "="*35)
         print("MENU DA PLAYLIST")
         print("1. Adicionar música à biblioteca")
         print("2. Remover música da biblioteca")
@@ -18,8 +18,8 @@ def principal():
         print("7. Exibir fila de reprodução atual")
         print("8. Exibir histórico de reproduções")
         print("9. Exibir estatísticas do sistema")
-        print("0. Sair do programa")
-        print("="*30)
+        print("10. Sair do programa")
+        print("="*35)
         
         opcao = input("Escolha uma opção: ")
 
@@ -178,7 +178,7 @@ def principal():
             total_reproduzidas = historico._tamanho
             print(f"\nTotal de músicas já reproduzidas (Histórico): {total_reproduzidas}")
 
-        elif opcao == "0":
+        elif opcao == "10":
             print("\nEncerrando o sistema... Até logo!")
             break 
             

@@ -4,7 +4,8 @@ Este projeto é um sistema de gerenciamento de playlist de músicas desenvolvido
 
 ## Funcionalidades
 
-Atualmente, o sistema conta com as seguintes operações:
+O sistema interativo de linha de comando conta com 10 operações principais:
+
 1.  **Adicionar música à biblioteca**: 
     * Cadastro de faixas com Título, Artista, Gênero e BPM.
     * Geração de ID automático, sequencial e não reutilizável.
@@ -24,6 +25,21 @@ Atualmente, o sistema conta com as seguintes operações:
    * Monta uma nova estrutura baseada em Fila (Queue FIFO) através da filtragem de BPM da Biblioteca.
    * A cada execução, limpa referências da fila anterior e remonta a estrutura do zero para os humores: Relaxar (≤80), Focar (81-120), Animar (121-160) e Treinar (>160).
 
+6. **Reproduzir próxima música**: 
+   * Retira a música do topo da fila atual (`dequeue`) e a insere imediatamente em uma fila independente de histórico (`enqueue`), com tratamento para evitar erros de "fila vazia".
+
+7. **Exibir fila de humor**: 
+   * Travessia *read-only* (apenas leitura) dos nós da fila atual, exibindo a ordem sem alterar os ponteiros de frente e fim.
+
+8. **Exibir histórico de reproduções**: 
+   * Reutiliza a lógica de travessia para listar as músicas já tocadas em ordem cronológica a partir da fila FIFO de histórico.
+
+9. **Estatísticas do sistema**: 
+   * Painel de controle que exibe o total de músicas na biblioteca (via travessia) e a volumetria dinâmica das filas.
+
+10. **Sair**: 
+   * Encerra o laço do sistema de forma segura.
+
 ## Requisitos Técnicos Implementados
 
 -   **Classes de Dados**: `Musica`, `NodoLista` e `NodoFila`.
@@ -35,8 +51,8 @@ Atualmente, o sistema conta com as seguintes operações:
 ## Estrutura do Projeto
 
 -   `modelos.py`: Contém as definições dos objetos de dados e nós.
--   `estruturas.py`: Contém a lógica das estruturas de dados (Lista e Fila).
--   `main.py`: Interface de linha de comando para interação com o usuário.
+-   `estruturas.py`: Contém a lógica das estruturas de dados
+-   `main.py`: Interface de linha de comando.
 
 ## Como executar
 
