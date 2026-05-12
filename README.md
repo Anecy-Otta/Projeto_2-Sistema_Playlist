@@ -5,18 +5,32 @@ Este projeto é um sistema de gerenciamento de playlist de músicas desenvolvido
 ## Funcionalidades
 
 Atualmente, o sistema conta com as seguintes operações:
-1.  **Adicionar música à biblioteca**: Cadastro de faixas com Título, Artista, Gênero e BPM.
-    * Geração de ID automático e sequencial.
+1.  **Adicionar música à biblioteca**: 
+    * Cadastro de faixas com Título, Artista, Gênero e BPM.
+    * Geração de ID automático, sequencial e não reutilizável.
     * Validação rigorosa de BPM (deve ser numérico e > 0).
     * Inserção no final da lista encadeada.
+
+2. **Remover música da biblioteca**: 
+   * Busca por ID e remoção lógica do nó, reorganizando os ponteiros da lista e ativando o Garbage Collector do Python.
+
+3. **Buscar música**: 
+   * Busca Linear pelo ID ou pelo Título.
+
+4. **Listar biblioteca completa**: 
+   * Percorre a lista encadeada do `inicio` ao fim.
+
+5. **Montar fila de reprodução por humor**: 
+   * Monta uma nova estrutura baseada em Fila (Queue FIFO) através da filtragem de BPM da Biblioteca.
+   * A cada execução, limpa referências da fila anterior e remonta a estrutura do zero para os humores: Relaxar (≤80), Focar (81-120), Animar (121-160) e Treinar (>160).
 
 ## Requisitos Técnicos Implementados
 
 -   **Classes de Dados**: `Musica`, `NodoLista` e `NodoFila`.
 -   **Biblioteca**: Implementação de uma **Lista Encadeada Simples** manual.
--   **Fila de Reprodução/Histórico**: Implementação de **Fila FIFO** (First-In, First-Out) com ponteiros para início e fim.
+-   **Fila de Reprodução/Histórico**: Implementação de **Fila FIFO** (First-In, First-Out).
 -   **Não utilização de estruturas prontas**: Todo o gerenciamento de memória e encadeamento é feito via nós.
--   **Tratamento de Erros**: Validação de entradas para garantir a integridade dos dados.
+-   **Tratamento de Erros**: Validação de entradas para evitar quebra do sistema.
 
 ## Estrutura do Projeto
 
