@@ -4,6 +4,7 @@ from estruturas import Biblioteca, Fila
 def principal():
     minha_biblioteca = Biblioteca()
     fila_reproducao = Fila()
+    historico = Fila() 
 
     while True:
         print("\n" + "="*30)
@@ -13,6 +14,7 @@ def principal():
         print("3. Buscar música na biblioteca")
         print("4. Listar todas as músicas da biblioteca")
         print("5. Montar fila de reprodução por humor (BPM)")
+        print("6. Reproduzir próxima música da fila")
         print("0. Sair do programa")
         print("="*30)
         
@@ -124,6 +126,18 @@ def principal():
                 print(f"\nNenhuma música na biblioteca se encaixa no humor '{nome_fila}' ({bpm_min}-{bpm_max} BPM).")
             else:
                 print(f"\nFila '{nome_fila}' montada do zero com {fila_reproducao._tamanho} música(s)!")
+
+        elif opcao == "6":
+            print("\n--- Reproduzir Próxima Música ---")
+            
+            if fila_reproducao.esta_vazia():
+                print("Erro: A fila de reprodução está vazia! Vá na Opção 5 e monte uma fila primeiro.")
+            else:
+                musica_atual = fila_reproducao.desenfileirar()
+                
+                print(f"Tocando agora: {musica_atual}")
+                
+                historico.enfileirar(musica_atual)
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")
