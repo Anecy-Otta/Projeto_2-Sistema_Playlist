@@ -9,6 +9,7 @@ def principal():
         print("MENU DA PLAYLIST")
         print("1. Adicionar música à biblioteca")
         print("2. Remover música da biblioteca")
+        print("3. Buscar música na biblioteca")
         print("0. Sair do programa")
         print("="*30)
         
@@ -53,6 +54,33 @@ def principal():
                     print(f" Erro: Não foi encontrada nenhuma música com o ID {id_para_remover}.")
             else:
                 print(" Erro: Por favor, digite um ID numérico válido.")
+
+        elif opcao == "3":
+            print("\n--- Buscar Música ---")
+            print("1. Buscar por ID")
+            print("2. Buscar por Título")
+            tipo_busca = input("Escolha a forma de busca (1 ou 2): ")
+
+            if tipo_busca == "1":
+                id_input = input("Digite o ID da música: ")
+                if id_input.isdigit():
+                    musica_encontrada = minha_biblioteca.buscar(int(id_input)) 
+                    if musica_encontrada:
+                        print(f"\n Encontrada: {musica_encontrada}")
+                    else:
+                        print("\n Nenhuma música encontrada com este ID.")
+                else:
+                    print(" Erro: O ID deve ser um número válido.")
+
+            elif tipo_busca == "2":
+                titulo_input = input("Digite o título da música: ")
+                musica_encontrada = minha_biblioteca.buscar_por_titulo(titulo_input)
+                if musica_encontrada:
+                    print(f"\n Encontrada: {musica_encontrada}")
+                else:
+                    print("\n Nenhuma música encontrada com este título.")
+            else:
+                print(" Opção inválida.")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")

@@ -26,6 +26,15 @@ class Biblioteca:
             atual = atual.proximo
         return None 
 
+    def buscar_por_titulo(self, titulo):
+        """Percorre a lista procurando uma música pelo Título."""
+        atual = self.inicio
+        while atual is not None:
+            if atual.musica.titulo.lower() == titulo.lower():
+                return atual.musica 
+            atual = atual.proximo
+        return None 
+
     def remover(self, id_musica):
         """Remove uma música da lista baseada no ID."""
         atual = self.inicio
