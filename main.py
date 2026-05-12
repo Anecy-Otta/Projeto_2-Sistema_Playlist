@@ -8,6 +8,7 @@ def principal():
         print("\n" + "="*30)
         print("MENU DA PLAYLIST")
         print("1. Adicionar música à biblioteca")
+        print("2. Remover música da biblioteca")
         print("0. Sair do programa")
         print("="*30)
         
@@ -32,10 +33,26 @@ def principal():
                     print("Erro: O BPM deve ser um número inteiro válido!")
             
             nova_musica = Musica(titulo, artista, genero, bpm)
-            
             minha_biblioteca.inserir(nova_musica)
             
             print(f"\n Sucesso! A música '{nova_musica.titulo}' foi adicionada com o ID: {nova_musica.id}")
+
+        elif opcao == "2":
+            print("\n--- Remover Música da Biblioteca ---")
+            
+            id_input = input("Digite o ID da música que deseja remover: ")
+            
+            if id_input.isdigit():
+                id_para_remover = int(id_input)
+                
+                sucesso = minha_biblioteca.remover(id_para_remover)
+                
+                if sucesso:
+                    print(f" Música com ID {id_para_remover} removida com sucesso!")
+                else:
+                    print(f" Erro: Não foi encontrada nenhuma música com o ID {id_para_remover}.")
+            else:
+                print(" Erro: Por favor, digite um ID numérico válido.")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até logo!")
